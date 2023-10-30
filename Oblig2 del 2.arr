@@ -41,7 +41,7 @@ summert = sum(transform-table, "energi")
 
 #Legger til oppsumert i table
 table2-summert = table: komponent :: String, energi :: Number
-  row: "summert", summert
+  row: "Totalt energiforbruk", summert
 end
 
 #Printer table med ny row + oppsummert
