@@ -35,3 +35,5 @@ summert = sum(transform-table, "energi")
 transform-column(table, "energi", energi-to-number)
 #Printer ut summen
 summert
+
+bar-chart(transform-table, "komponent", "energi")
