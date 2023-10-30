@@ -2,10 +2,11 @@ include gdrive-sheets
 include shared-gdrive("dcic-2021", "1wyQZj_L0qqV9Ekgr9au6RX2iqt2Ga8Ep")
 include data-source
 ssid = "1RYN0i4Zx_UETVuYacgaGfnFcv4l9zd9toQTTdkQkj7g"
-table = 
-  load-table:  komponent :: String, energi :: Number
+table=
+  load-table:  komponent, energi
   source: load-spreadsheet(ssid).sheet-by-name("kWh", true)
     sanitize energi using string-sanitizer
+    sanitize komponent using string-sanitizer
 end
 
 distance-travelled-per-day = 10 #Mil
@@ -26,8 +27,11 @@ where:
   energi-to-number("48") is 48
 end
 
+transform-table = transform-column(table, "energi", energi-to-number)
+
+summert = sum(transform-table, "energi")
+
+#Printer ut tabellen uten "" på tallene
 transform-column(table, "energi", energi-to-number)
-
-summering-av-energi = sum(table, "energi")
-
-summering-av-energi
+#Printer ut summen
+summert
