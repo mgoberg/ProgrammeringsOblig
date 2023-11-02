@@ -22,9 +22,9 @@ sverige-flagg =
 
 # Det Finnske flagget
 finland-flagg =
-  overlay-xy(rectangle(200, 1000, "solid", "white"), -500, 0,
-    overlay-xy(rectangle(1600, 200, "solid", "white"), 0, -400,
-      (rectangle(1600, 1000, "solid", color(200, 16, 46, 1)))))
+  overlay-xy(rectangle(200, 1000, "solid", "blue"), -500, 0,
+    overlay-xy(rectangle(1600, 200, "solid", "blue"), 0, -400,
+      (rectangle(1600, 1000, "solid", color(255, 255, 255, 1)))))
 
 # Det Islandske flagget
 island-flagg =
@@ -43,21 +43,25 @@ faeroyske-flagg =
           (rectangle(1100, 800, "solid",  "white"))))))
 
 # Input
-flagg = "Norsk" # Dette er hardcodet fordi man ikke kan ta en input i Pyret.
 
 # If statement for å printe flaggene basert på input.
-if flagg == "Norsk":
-norge-flagg
-  else if flagg == "Dansk":
-  danmark-flagg
-    else if flagg == "Svensk":
+#Altså feks: flagg("norsk")
+
+fun flagg(a):
+  if (a == "norsk"):
+    norge-flagg
+  else if (a == "dansk"):
+    danmark-flagg
+  else if (a == "svensk"):
     sverige-flagg
-      else if flagg == "Finnsk":
-      finland-flagg
-        else if flagg == "Islandsk":
-        island-flagg
-          else if flagg == "Færøysk":
-          faeroyske-flagg
-            else:
-            "Sjekk for skrivefeil! Husk stor forbokstav. Feks, Norsk."
+  else if (a == "finnsk"):
+    finland-flagg
+  else if (a == "islandsk"):
+    island-flagg
+  else if (a == "faeroysk"):
+    faeroyske-flagg
+  else:
+    "Sjekk for skrivefeil! Husk stor forbokstav. Feks, Norsk."
+    
+  end
 end
